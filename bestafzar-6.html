@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BESTAFZAR | بهترین افزار</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&family=Lalezar&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --anar: #C41E3A;        /* pomegranate red */
+    --anar-dark: #7E1226;
+    --barg: #1F7A4D;        /* leaf green */
+    --barg-dark: #144A2F;
+    --barg-light: #3E9E6B;
+    --abi: #2158C4;         /* blue */
+    --abi-dark: #123A87;
+    --abi-light: #4C7FE0;
+    --cream: #F7F3E9;
+    --cream-2: #ECE2CC;
+    --ink: #201814;
+    --ink-soft: #5C4F47;
+    --gold: #C79A4B;
+    --line: rgba(36,26,22,0.14);
+    --radius: 16px;
+    --shadow: 0 14px 32px rgba(20,14,10,0.16), 0 3px 8px rgba(20,14,10,0.10);
+    --shadow-press: 0 2px 6px rgba(20,14,10,0.18);
+    --bg1: rgba(196,30,58,0.16);
+    --bg2: rgba(31,122,77,0.18);
+    --bg3: rgba(33,88,196,0.08);
+    --font-display: 'Lalezar', 'Vazirmatn', Tahoma, sans-serif;
+  }
+
+  /* ---------- Theme variants ---------- */
+  body.theme-ocean{
+    --anar:#0E7C9E; --anar-dark:#0A4F66; --barg:#1F6FA8; --barg-dark:#124569; --barg-light:#4C9CD1;
+    --abi:#12A3A0; --abi-dark:#0B6764; --abi-light:#3FC6C2; --gold:#5FD4C7;
+    --bg1:rgba(14,124,158,0.20); --bg2:rgba(18,163,160,0.18); --bg3:rgba(33,88,196,0.10);
+  }
+  body.theme-forest{
+    --anar:#2E7D32; --anar-dark:#1B5E20; --barg:#558B2F; --barg-dark:#33691E; --barg-light:#7CB342;
+    --abi:#00695C; --abi-dark:#004D40; --abi-light:#26A69A; --gold:#C0A45B;
+    --bg1:rgba(46,125,50,0.18); --bg2:rgba(85,139,47,0.18); --bg3:rgba(0,105,92,0.10);
+  }
+  body.theme-sunset{
+    --anar:#E64A19; --anar-dark:#A83214; --barg:#F9A825; --barg-dark:#B67B0E; --barg-light:#FFC547;
+    --abi:#AD1457; --abi-dark:#780E3D; --abi-light:#D84C86; --gold:#FFB74D;
+    --bg1:rgba(230,74,25,0.20); --bg2:rgba(249,168,37,0.20); --bg3:rgba(173,20,87,0.10);
+  }
+  body.theme-royal{
+    --anar:#6A1B9A; --anar-dark:#43125F; --barg:#7B1FA2; --barg-dark:#4A148C; --barg-light:#AB47BC;
+    --abi:#283593; --abi-dark:#1A237E; --abi-light:#5C6BC0; --gold:#D4AF37;
+    --bg1:rgba(106,27,154,0.20); --bg2:rgba(40,53,147,0.18); --bg3:rgba(212,175,55,0.10);
+  }
+  body.theme-gold{
+    --anar:#B8860B; --anar-dark:#7A5900; --barg:#8D6E13; --barg-dark:#5C480C; --barg-light:#C9A227;
+    --abi:#A1712A; --abi-dark:#6B4A1B; --abi-light:#D4A54A; --gold:#F2C14E;
+    --cream:#F9F2E1; --cream-2:#EFE1BE;
+    --bg1:rgba(184,134,11,0.20); --bg2:rgba(141,110,19,0.18); --bg3:rgba(242,193,78,0.12);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1000px 460px at 8% -8%, var(--bg1), transparent 60%),
+      radial-gradient(900px 460px at 92% 0%, var(--bg2), transparent 58%),
+      radial-gradient(1200px 600px at 50% 40%, var(--bg3), transparent 65%),
+      var(--cream);
+    color:var(--ink);
+    font-family:'Vazirmatn', Tahoma, 'Segoe UI', Arial, sans-serif;
+    line-height:1.7;
+    min-height:100vh;
+    perspective:1600px;
+    transition:background-color .4s ease;
+  }
+  h1, .hero h1, .brand-text b, .best-info h3, .card-title h4, .modal h3, .detail-name{
+    font-family:var(--font-display), 'Vazirmatn', sans-serif;
+  }
+  a{color:inherit;}
+  button{font-family:inherit;cursor:pointer;}
+  ::selection{background:var(--anar);color:#fff;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:linear-gradient(180deg, rgba(251,246,236,0.97), rgba(251,246,236,0.90));
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    box-shadow:0 2px 0 0 var(--anar), 0 4px 0 0 var(--abi), 0 6px 10px rgba(20,14,10,0.08);
+  }
+  .header-inner{
+    max-width:1120px; margin:0 auto; padding:14px 20px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand-mark{
+    width:42px;height:42px;border-radius:12px;
+    background:conic-gradient(from 220deg, var(--anar), var(--abi), var(--barg), var(--anar));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff; font-weight:800; font-size:19px;
+    box-shadow:
+      inset 0 2px 3px rgba(255,255,255,0.55),
+      inset 0 -3px 5px rgba(0,0,0,0.35),
+      0 6px 14px rgba(20,14,10,0.30);
+    transform:rotateX(8deg) rotateY(-8deg);
+    transition:transform .25s ease;
+  }
+  .brand:hover .brand-mark{transform:rotateX(0deg) rotateY(0deg) scale(1.05);}
+  .brand-text{display:flex; flex-direction:column; line-height:1.2;}
+  .brand-text b{font-size:16px; letter-spacing:0.2px;}
+  .brand-text span{font-size:11.5px; color:var(--ink-soft);}
+
+  .auth-area{display:flex; align-items:center; gap:10px;}
+  .pill{
+    padding:9px 16px; border-radius:999px; border:1px solid var(--line);
+    background:#fff; font-size:13.5px; font-weight:700; color:var(--ink);
+    box-shadow:0 3px 0 var(--line), 0 4px 8px rgba(20,14,10,0.08);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .pill:hover{transform:translateY(-2px); box-shadow:0 5px 0 var(--line), 0 8px 16px rgba(20,14,10,0.14);}
+  .pill:active{transform:translateY(1px); box-shadow:0 1px 0 var(--line);}
+  .pill.primary{background:linear-gradient(180deg, var(--anar) 0%, var(--anar-dark) 100%); color:#fff; border-color:var(--anar-dark);
+    box-shadow:0 3px 0 var(--anar-dark), 0 6px 14px rgba(126,18,38,0.35);}
+  .pill.primary:hover{box-shadow:0 5px 0 var(--anar-dark), 0 10px 20px rgba(126,18,38,0.4);}
+  .pill.primary:active{box-shadow:0 1px 0 var(--anar-dark);}
+  .pill.ghost{background:transparent; box-shadow:none;}
+  .pill.ghost:hover{box-shadow:none;}
+  .who{font-size:13px; color:var(--ink-soft);}
+  .who b{color:var(--barg); font-weight:700;}
+
+  /* ---------- Hero ---------- */
+  .hero{max-width:1120px; margin:0 auto; padding:60px 20px 28px;}
+  .hero h1{
+    font-size:clamp(30px,4.6vw,48px); margin:0 0 12px; font-weight:800;
+    color:var(--ink); letter-spacing:-0.5px;
+    text-shadow:
+      1px 1px 0 rgba(255,255,255,0.6),
+      0 3px 0 rgba(196,30,58,0.12),
+      0 8px 18px rgba(20,14,10,0.10);
+  }
+  .hero h1 em{font-style:normal; color:var(--anar);}
+  .hero p{max-width:640px; color:var(--ink-soft); font-size:16.5px; margin:0 0 24px;}
+
+  .filters{display:flex; flex-wrap:wrap; gap:9px; margin-bottom:6px;}
+  .filter-btn{
+    padding:9px 17px; border-radius:999px; border:1px solid var(--line);
+    background:#fff; font-size:13.5px; color:var(--ink-soft); font-weight:700;
+    box-shadow:0 3px 0 var(--line);
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease, color .12s ease;
+  }
+  .filter-btn:hover{transform:translateY(-2px);}
+  .filter-btn.active{
+    background:linear-gradient(180deg, var(--barg-light), var(--barg));
+    border-color:var(--barg-dark); color:#fff;
+    box-shadow:0 3px 0 var(--barg-dark), 0 6px 14px rgba(20,74,47,0.35);
+  }
+
+  /* ---------- Best pick ---------- */
+  .best-wrap{max-width:1120px; margin:26px auto 0; padding:0 20px;}
+  .best-card{
+    --rx:0deg; --ry:0deg;
+    display:flex; align-items:center; gap:18px;
+    background:linear-gradient(110deg, var(--barg-dark) 0%, var(--barg) 45%, var(--abi-dark) 130%);
+    color:#fff; border-radius:20px; padding:22px 24px;
+    box-shadow:0 4px 0 rgba(0,0,0,0.18), var(--shadow);
+    transform-style:preserve-3d;
+    transform:rotateX(var(--rx)) rotateY(var(--ry));
+    transition:transform .12s ease, box-shadow .2s ease;
+    will-change:transform;
+  }
+  .best-card:hover{box-shadow:0 4px 0 rgba(0,0,0,0.18), 0 30px 50px rgba(20,14,10,0.28);}
+  .best-card .tag{
+    font-size:12px; font-weight:700; background:rgba(255,255,255,0.20);
+    padding:4px 10px; border-radius:999px; width:fit-content;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,0.25);
+  }
+  .best-icon{
+    width:58px;height:58px;border-radius:16px; flex:none;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800; font-size:23px; color:#fff;
+    box-shadow:
+      inset 0 2px 3px rgba(255,255,255,0.55),
+      inset 0 -4px 6px rgba(0,0,0,0.3),
+      0 8px 16px rgba(0,0,0,0.28);
+  }
+  .best-info{flex:1; min-width:0;}
+  .best-info h3{margin:2px 0 3px; font-size:19px;}
+  .best-info p{margin:0; font-size:13.5px; opacity:0.92;}
+  .best-score{font-size:22px; font-weight:800; flex:none;}
+  .best-score small{display:block; font-size:11px; font-weight:500; opacity:0.85;}
+
+  /* ---------- Grid ---------- */
+  .grid-wrap{max-width:1160px; margin:0 auto; padding:30px 20px 60px;}
+  .grid{
+    display:grid; grid-template-columns:repeat(5, 1fr); gap:18px;
+  }
+  @media (max-width:980px){ .grid{grid-template-columns:repeat(3, 1fr);} }
+  @media (max-width:680px){ .grid{grid-template-columns:repeat(2, 1fr);} }
+  @media (max-width:400px){ .grid{grid-template-columns:1fr;} }
+  .card{
+    --rx:0deg; --ry:0deg; --tz:0px;
+    background:linear-gradient(180deg, #fff 0%, #fdfbf5 100%);
+    border:1px solid var(--line); border-radius:var(--radius);
+    padding:18px; position:relative; display:flex; flex-direction:column; gap:10px;
+    transform-style:preserve-3d; cursor:pointer;
+    box-shadow:0 1px 0 rgba(255,255,255,0.8) inset, 0 10px 20px rgba(20,14,10,0.08);
+    transition:box-shadow .2s ease, transform .12s ease;
+    transform:translateZ(0) rotateX(var(--rx)) rotateY(var(--ry));
+    will-change:transform;
+  }
+  .card::before{
+    content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+    background:linear-gradient(135deg, rgba(255,255,255,0.35), transparent 40%);
+    opacity:0; transition:opacity .2s ease;
+  }
+  .card:hover{
+    box-shadow:var(--shadow), 0 26px 40px rgba(20,14,10,0.18);
+    transform:translateY(-8px) translateZ(30px) rotateX(var(--rx)) rotateY(var(--ry)) scale(1.02);
+  }
+  .card:hover::before{opacity:1;}
+  .card .card-top, .card .desc, .card .card-foot, .card .dl-btn{transform:translateZ(22px); transform-style:preserve-3d;}
+  .card-top{display:flex; align-items:flex-start; gap:12px;}
+  .icon{
+    width:48px;height:48px;border-radius:14px; flex:none;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff; font-weight:800; font-size:19px;
+    box-shadow:
+      inset 0 2px 3px rgba(255,255,255,0.5),
+      inset 0 -4px 6px rgba(0,0,0,0.32),
+      0 6px 12px rgba(20,14,10,0.22);
+  }
+  .card-title{flex:1; min-width:0;}
+  .card-title h4{margin:0 0 2px; font-size:15.5px;}
+  .cat{
+    display:inline-block; font-size:11px; font-weight:700; color:#fff;
+    padding:3px 9px; border-radius:999px;
+    background:var(--barg);
+  }
+  .cat[data-cat="نقشه‌یاب"]{background:var(--abi);}
+  .cat[data-cat="هوش مصنوعی"]{background:var(--anar);}
+  .desc{font-size:13px; color:var(--ink-soft); margin:0; min-height:38px;}
+  .card-foot{
+    display:flex; align-items:center; justify-content:space-between;
+    border-top:1px dashed var(--line); padding-top:10px; margin-top:auto;
+  }
+  .stars{display:flex; gap:2px; direction:ltr;}
+  .star{
+    font-size:19px; color:#D8CEC0; border:none; background:none; padding:0; line-height:1;
+    transition:transform .1s ease, color .1s ease;
+  }
+  .star:hover{transform:scale(1.15);}
+  .star.filled{color:var(--gold);}
+  .avg{font-size:12px; color:var(--ink-soft); white-space:nowrap;}
+  .avg b{color:var(--anar); font-size:13px;}
+
+  .admin-controls{display:flex; gap:6px;}
+  .icon-btn{
+    width:26px;height:26px;border-radius:8px; border:1px solid var(--line);
+    background:#fff; font-size:13px; display:flex; align-items:center; justify-content:center;
+  }
+  .icon-btn.danger{color:var(--anar); border-color:rgba(178,28,52,0.3);}
+  .add-card{
+    border:2px dashed var(--line); display:flex; align-items:center; justify-content:center;
+    color:var(--ink-soft); font-weight:700; font-size:14px; min-height:150px; background:transparent;
+  }
+  .add-card:hover{border-color:var(--barg); color:var(--barg);}
+
+  footer{
+    text-align:center; padding:28px 20px 40px; color:var(--ink-soft); font-size:12.5px;
+    border-top:1px solid var(--line);
+  }
+
+  /* ---------- Modal ---------- */
+  .overlay{
+    position:fixed; inset:0; background:rgba(36,26,22,0.45); z-index:100;
+    display:flex; align-items:center; justify-content:center; padding:20px;
+    opacity:0; pointer-events:none; transition:opacity .18s ease;
+  }
+  .overlay.show{opacity:1; pointer-events:auto;}
+  .modal{
+    background:#fff; border-radius:16px; width:100%; max-width:360px;
+    padding:24px; box-shadow:0 20px 50px rgba(0,0,0,0.25);
+    transform:translateY(8px); transition:transform .18s ease;
+  }
+  .overlay.show .modal{transform:translateY(0);}
+  .modal h3{margin:0 0 4px; font-size:18px;}
+  .modal p.sub{margin:0 0 16px; font-size:12.5px; color:var(--ink-soft);}
+  .field{margin-bottom:12px;}
+  .field label{display:block; font-size:12.5px; color:var(--ink-soft); margin-bottom:5px;}
+  .field input, .field textarea, .field select{
+    width:100%; padding:10px 12px; border-radius:9px; border:1px solid var(--line);
+    font-family:inherit; font-size:14px; background:var(--cream);
+  }
+  .field textarea{resize:vertical; min-height:60px;}
+  .modal-actions{display:flex; gap:8px; margin-top:6px;}
+  .modal-actions .pill{flex:1; text-align:center; justify-content:center;}
+  .switch-link{font-size:12.5px; text-align:center; margin-top:12px; color:var(--ink-soft);}
+  .switch-link a{color:var(--anar); font-weight:700; cursor:pointer;}
+  .msg{font-size:12.5px; margin-top:8px; min-height:16px;}
+  .msg.err{color:var(--anar);}
+  .msg.ok{color:var(--barg);}
+  .close-x{
+    position:absolute; top:14px; left:14px; border:none; background:none;
+    font-size:18px; color:var(--ink-soft);
+  }
+  .modal{position:relative;}
+
+  @media (max-width:520px){
+    .best-card{flex-wrap:wrap;}
+    .best-score{margin-inline-start:auto;}
+  }
+
+  /* ---------- Header actions / menu ---------- */
+  .header-actions{display:flex; align-items:center; gap:10px;}
+  .menu-wrap{position:relative;}
+  .menu-btn{
+    width:40px;height:40px;border-radius:12px; border:1px solid var(--line);
+    background:#fff; font-size:18px; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 3px 0 var(--line), 0 4px 8px rgba(20,14,10,0.08);
+    transition:transform .12s ease;
+  }
+  .menu-btn:hover{transform:translateY(-2px);}
+  .menu-dropdown{
+    position:absolute; top:calc(100% + 8px); left:0; min-width:190px;
+    background:#fff; border:1px solid var(--line); border-radius:12px;
+    box-shadow:var(--shadow); padding:6px; display:none; flex-direction:column; gap:2px;
+    z-index:60;
+  }
+  .menu-dropdown.show{display:flex;}
+  .menu-item{
+    width:100%; text-align:right; padding:10px 12px; border-radius:8px; border:none;
+    background:transparent; font-size:13.5px; color:var(--ink); font-weight:600;
+    display:flex; align-items:center; gap:8px;
+  }
+  .menu-item:hover{background:var(--cream-2);}
+
+  /* ---------- Download button ---------- */
+  .dl-btn{
+    display:block; text-align:center; text-decoration:none;
+    margin-top:2px; padding:9px 10px; border-radius:10px;
+    background:linear-gradient(180deg, var(--abi-light), var(--abi));
+    color:#fff; font-size:12.5px; font-weight:700;
+    box-shadow:0 3px 0 var(--abi-dark);
+    transition:transform .12s ease;
+  }
+  .dl-btn:hover{transform:translateY(-2px);}
+  .dl-btn:active{transform:translateY(1px); box-shadow:0 1px 0 var(--abi-dark);}
+
+  /* ---------- Icon image (from gallery) ---------- */
+  .icon img, .best-icon img{
+    width:100%; height:100%; object-fit:cover; border-radius:inherit;
+  }
+  .field input[type="file"]{background:#fff; padding:8px;}
+  .icon-preview{
+    width:48px;height:48px;border-radius:14px; margin-top:8px; object-fit:cover;
+    border:1px solid var(--line); display:none;
+  }
+  .icon-preview.show{display:block;}
+  .field-hint{font-size:11px; color:var(--ink-soft); margin-top:4px;}
+
+  /* ---------- Dark mode ---------- */
+  body.dark-mode{
+    --cream:#171310;
+    --cream-2:#221b15;
+    --ink:#F3ECE3;
+    --ink-soft:#B9AB9E;
+    --line: rgba(255,255,255,0.12);
+  }
+  body.dark-mode header{
+    background:linear-gradient(180deg, rgba(23,19,16,0.97), rgba(23,19,16,0.90));
+  }
+  body.dark-mode .pill,
+  body.dark-mode .menu-btn,
+  body.dark-mode .menu-dropdown,
+  body.dark-mode .filter-btn,
+  body.dark-mode .card,
+  body.dark-mode .modal,
+  body.dark-mode .icon-btn{
+    background:#221b15; color:var(--ink);
+  }
+  body.dark-mode .card{
+    background:linear-gradient(180deg, #221b15 0%, #1b1611 100%);
+  }
+  body.dark-mode .field input,
+  body.dark-mode .field textarea,
+  body.dark-mode .field select{
+    background:#171310; color:var(--ink); border-color:var(--line);
+  }
+  body.dark-mode .pill.primary{
+    background:linear-gradient(180deg, var(--anar) 0%, var(--anar-dark) 100%); color:#fff;
+  }
+  body.dark-mode .menu-item:hover{background:#2c241c;}
+
+  /* ---------- App detail modal ---------- */
+  .detail-modal{
+    max-width:420px; padding:0; overflow:hidden;
+  }
+  .detail-carpet{
+    --app-color:#C41E3A;
+    position:relative; padding:30px 24px 22px; color:#fff;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.16) 0 8px, transparent 8px 18px),
+      repeating-linear-gradient(-45deg, rgba(0,0,0,0.12) 0 8px, transparent 8px 18px),
+      radial-gradient(120% 140% at 20% -10%, color-mix(in srgb, var(--app-color) 60%, #fff 15%), transparent 55%),
+      linear-gradient(160deg, var(--app-color) 0%, color-mix(in srgb, var(--app-color) 55%, #000 30%) 100%);
+    transform-style:preserve-3d; perspective:600px;
+  }
+  .detail-carpet::after{
+    content:""; position:absolute; inset:0;
+    box-shadow:inset 0 -18px 24px -10px rgba(0,0,0,0.35), inset 0 14px 18px -10px rgba(255,255,255,0.25);
+    pointer-events:none;
+  }
+  .detail-close{
+    position:absolute; top:12px; left:12px; border:none; background:rgba(0,0,0,0.22);
+    color:#fff; width:30px; height:30px; border-radius:9px; font-size:16px; z-index:2;
+  }
+  .detail-icon{
+    width:76px; height:76px; border-radius:20px; display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:30px; color:#fff; background:rgba(255,255,255,0.18);
+    box-shadow:
+      inset 0 3px 4px rgba(255,255,255,0.55),
+      inset 0 -6px 10px rgba(0,0,0,0.35),
+      0 18px 30px rgba(0,0,0,0.35);
+    transform:translateZ(40px) rotateX(6deg);
+    margin-bottom:12px; position:relative; z-index:1;
+  }
+  .detail-icon img{width:100%; height:100%; object-fit:cover; border-radius:inherit;}
+  .detail-name{font-size:22px; margin:0 0 4px; position:relative; z-index:1;}
+  .detail-cat{position:relative; z-index:1;}
+  .detail-body{padding:20px 24px 24px;}
+  .detail-desc{font-size:14px; color:var(--ink-soft); margin:0 0 16px; line-height:1.9;}
+  .detail-rate-row{display:flex; align-items:center; justify-content:space-between; margin-bottom:18px;}
+  .detail-stars{display:flex; gap:3px; direction:ltr;}
+  .detail-stars .star{font-size:24px;}
+  .detail-dl{
+    display:block; text-align:center; text-decoration:none; padding:13px; border-radius:12px;
+    background:linear-gradient(180deg, var(--app-color), color-mix(in srgb, var(--app-color) 60%, #000 25%));
+    color:#fff; font-size:14.5px; font-weight:800;
+    box-shadow:0 4px 0 rgba(0,0,0,0.25), 0 10px 20px rgba(0,0,0,0.2);
+    transition:transform .12s ease;
+  }
+  .detail-dl:hover{transform:translateY(-2px);}
+  .detail-dl.disabled{
+    background:var(--cream-2); color:var(--ink-soft); box-shadow:none; cursor:default;
+  }
+
+  /* ---------- Theme picker ---------- */
+  .theme-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; margin-top:6px;}
+  .theme-opt{
+    border:2px solid var(--line); border-radius:14px; padding:12px; text-align:center;
+    background:#fff; font-size:12.5px; font-weight:700; color:var(--ink);
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    transition:transform .12s ease, border-color .12s ease;
+  }
+  .theme-opt:hover{transform:translateY(-3px);}
+  .theme-opt.active{border-color:var(--anar);}
+  .theme-swatch{
+    width:100%; height:38px; border-radius:9px;
+    box-shadow:inset 0 2px 3px rgba(255,255,255,0.4), inset 0 -4px 6px rgba(0,0,0,0.25), 0 4px 10px rgba(0,0,0,0.18);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-mark">ب</div>
+      <div class="brand-text">
+        <b>BESTAFZAR</b>
+        <span>بهترین افزار</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" title="منو">☰</button>
+        <div class="menu-dropdown" id="menuDropdown">
+          <button class="menu-item" id="darkModeToggle">🌓 حالت شب / روز</button>
+          <button class="menu-item" id="themeMenuBtn">🎨 تم</button>
+          <button class="menu-item" id="supportMenuBtn">💬 پشتیبانی</button>
+        </div>
+      </div>
+      <div class="auth-area" id="authArea"></div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>پیام‌رسان‌ها و <em>دستیارهای هوش مصنوعی</em> ایران، یک‌جا</h1>
+  <p>تلگرام، روبیکا، بله، ایتا، سروش، نشان و بلد، در کنار کلود، دیپ‌سیک و چت‌جی‌پی‌تی؛ به هرکدوم که استفاده می‌کنید امتیاز بدید تا بهترین‌شون مشخص بشه.</p>
+  <div class="filters" id="filters"></div>
+</section>
+
+<div class="best-wrap" id="bestWrap"></div>
+
+<div class="grid-wrap">
+  <div class="grid" id="grid"></div>
+</div>
+
+<footer>ساخته‌شده با BESTAFZAR — یک دایرکتوری امتیازدهی برای افزارهای پرکاربرد ایرانی و جهانی</footer>
+
+<!-- Auth modal -->
+<div class="overlay" id="authOverlay">
+  <div class="modal">
+    <button class="close-x" id="authClose">✕</button>
+    <h3 id="authTitle">ورود</h3>
+    <p class="sub" id="authSub">وارد حساب کاربری‌تان شوید</p>
+    <div class="field">
+      <label>نام کاربری</label>
+      <input id="authUser" placeholder="مثلاً: sara_92" autocomplete="off" />
+    </div>
+    <div class="field">
+      <label>رمز عبور</label>
+      <input id="authPass" type="password" placeholder="رمز عبور" />
+    </div>
+    <div class="modal-actions">
+      <button class="pill primary" id="authSubmit" style="width:100%">ورود</button>
+    </div>
+    <div class="msg" id="authMsg"></div>
+    <div class="switch-link" id="authSwitch">حساب ندارید؟ <a id="toRegister">ثبت‌نام کنید</a></div>
+  </div>
+</div>
+
+<!-- App edit modal (admin) -->
+<div class="overlay" id="editOverlay">
+  <div class="modal">
+    <button class="close-x" id="editClose">✕</button>
+    <h3 id="editTitle">افزودن افزار</h3>
+    <p class="sub">این تغییرات برای همه کاربران سایت نمایش داده می‌شود</p>
+    <div class="field">
+      <label>نام افزار</label>
+      <input id="editName" placeholder="مثلاً: تلگرام" />
+    </div>
+    <div class="field">
+      <label>دسته‌بندی</label>
+      <select id="editCat">
+        <option value="پیام‌رسان">پیام‌رسان</option>
+        <option value="نقشه‌یاب">نقشه‌یاب</option>
+        <option value="هوش مصنوعی">هوش مصنوعی</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>توضیح کوتاه</label>
+      <textarea id="editDesc" placeholder="یک خط توضیح کوتاه"></textarea>
+    </div>
+    <div class="field">
+      <label>رنگ آیکون (در صورت نبود عکس)</label>
+      <input id="editColor" type="color" value="#B21C34" style="height:42px; padding:4px;" />
+    </div>
+    <div class="field">
+      <label>آیکون از گالری (اختیاری)</label>
+      <input id="editIconFile" type="file" accept="image/*" />
+      <img id="editIconPreview" class="icon-preview" alt="پیش‌نمایش آیکون" />
+      <div class="field-hint" id="editIconClearWrap" style="display:none;">
+        <a id="editIconClear" style="color:var(--anar); font-weight:700; cursor:pointer;">حذف آیکون انتخابی</a>
+      </div>
+    </div>
+    <div class="field">
+      <label>لینک دانلود (اختیاری)</label>
+      <input id="editLink" placeholder="https://..." />
+    </div>
+    <div class="modal-actions">
+      <button class="pill primary" id="editSave" style="width:100%">ذخیره</button>
+    </div>
+    <div class="msg" id="editMsg"></div>
+  </div>
+</div>
+
+<!-- Support modal -->
+<div class="overlay" id="supportOverlay">
+  <div class="modal">
+    <button class="close-x" id="supportClose">✕</button>
+    <h3>پشتیبانی</h3>
+    <p class="sub" style="margin-bottom:14px;">
+      خیلی خوشحال می‌شویم کمکتان کنیم. اگر با مشکلی مواجه شده‌اید یا سؤالی دارید، لطفاً از طریق پیوی تلگرام با آیدی زیر با ما در ارتباط باشید تا در سریع‌ترین زمان ممکن پیگیری کنیم.
+    </p>
+    <a class="pill primary" style="width:100%; text-align:center; justify-content:center; display:block; text-decoration:none;"
+       href="https://t.me/bestafzar_supports" target="_blank" rel="noopener">
+       رفتن به پشتیبانی در تلگرام
+    </a>
+  </div>
+</div>
+
+<!-- Theme picker modal -->
+<div class="overlay" id="themeOverlay">
+  <div class="modal">
+    <button class="close-x" id="themeClose">✕</button>
+    <h3>انتخاب تم</h3>
+    <p class="sub">یکی از تم‌های خفن سایت رو انتخاب کن</p>
+    <div class="theme-grid" id="themeGrid"></div>
+  </div>
+</div>
+
+<!-- App detail modal -->
+<div class="overlay" id="detailOverlay">
+  <div class="modal detail-modal">
+    <div class="detail-carpet" id="detailCarpet">
+      <button class="detail-close" id="detailClose">✕</button>
+      <div class="detail-icon" id="detailIcon"></div>
+      <h3 class="detail-name" id="detailName"></h3>
+      <span class="cat detail-cat" id="detailCat"></span>
+    </div>
+    <div class="detail-body">
+      <p class="detail-desc" id="detailDesc"></p>
+      <div class="detail-rate-row">
+        <div class="detail-stars" id="detailStars"></div>
+        <div class="avg" id="detailAvg"></div>
+      </div>
+      <a class="detail-dl" id="detailDl" target="_blank" rel="noopener">⬇ دانلود افزار</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  const ADMIN_USERNAME = "motaka.user"; // ثبت‌نام یا ورود با این نام کاربری = مالک سایت
+  const OWNER_USERNAME = "davarivoosoog1392"; // نام کاربری مخصوص مالک سایت
+  const OWNER_PASSWORD = "Qazwsedx1392";       // رمز عبور مخصوص مالک سایت
+
+  const DEFAULT_APPS = [
+    {id:"telegram", name:"تلگرام", cat:"پیام‌رسان", desc:"پیام‌رسان سریع و پرکاربرد بین‌المللی با کانال و گروه‌های نامحدود.", color:"#29A9EB"},
+    {id:"rubika", name:"روبیکا", cat:"پیام‌رسان", desc:"پیام‌رسان ایرانی چندمنظوره با پخش زنده، موزیک و بازی.", color:"#6A3DE8"},
+    {id:"bale", name:"بله", cat:"پیام‌رسان", desc:"پیام‌رسان ایرانی با قابلیت پرداخت و کیف پول داخلی.", color:"#2AA84A"},
+    {id:"eitaa", name:"ایتا", cat:"پیام‌رسان", desc:"پیام‌رسان بومی با تمرکز بر امنیت و سرعت.", color:"#1AA5A0"},
+    {id:"soroush", name:"سروش", cat:"پیام‌رسان", desc:"پیام‌رسان ملی با گروه و کانال‌های عمومی.", color:"#2FA6D9"},
+    {id:"neshan", name:"نشان", cat:"نقشه‌یاب", desc:"نقشه و مسیریاب آنلاین با ترافیک لحظه‌ای شهرهای ایران.", color:"#E8433D"},
+    {id:"balad", name:"بلد", cat:"نقشه‌یاب", desc:"مسیریاب و نقشه با امکان ثبت مکان و جست‌وجوی کسب‌وکار.", color:"#F2A93B"},
+    {id:"claude", name:"کلود", cat:"هوش مصنوعی", desc:"دستیار هوش مصنوعی برای نوشتن، تحلیل و کدنویسی.", color:"#C15F3C"},
+    {id:"deepseek", name:"دیپ‌سیک", cat:"هوش مصنوعی", desc:"مدل هوش مصنوعی برای گفت‌وگو و حل مسئله.", color:"#2D5BE3"},
+    {id:"chatgpt", name:"چت‌جی‌پی‌تی", cat:"هوش مصنوعی", desc:"دستیار هوش مصنوعی OpenAI برای گفت‌وگو و تولید محتوا.", color:"#10A37F"}
+  ];
+
+  const THEMES = [
+    {id:"classic", name:"انار و یاس", colors:["#C41E3A","#1F7A4D","#2158C4"]},
+    {id:"ocean",   name:"اقیانوس آبی", colors:["#0E7C9E","#12A3A0","#1F6FA8"]},
+    {id:"forest",  name:"جنگل سبز", colors:["#2E7D32","#00695C","#558B2F"]},
+    {id:"sunset",  name:"غروب نارنجی", colors:["#E64A19","#F9A825","#AD1457"]},
+    {id:"royal",   name:"بنفش شاهانه", colors:["#6A1B9A","#283593","#D4AF37"]},
+    {id:"gold",    name:"طلایی", colors:["#B8860B","#8D6E13","#F2C14E"]}
+  ];
+
+  let state = {
+    apps: [],
+    users: {},
+    ratings: {},   // {appId: {username: rating}}
+    session: null, // {username, isAdmin}
+    filter: "همه",
+    authMode: "login",
+    editingId: null,
+    editingIcon: null, // base64 dataURL of newly selected icon (or null)
+    darkMode: false,
+    theme: "classic",
+    detailAppId: null
+  };
+
+  // ---------- storage helpers ----------
+  async function loadJSON(key, fallback, shared){
+    if(shared === undefined) shared = true;
+    try{
+      const r = await window.storage.get(key, shared);
+      return r && r.value ? JSON.parse(r.value) : fallback;
+    }catch(e){ return fallback; }
+  }
+  async function saveJSON(key, value, shared){
+    if(shared === undefined) shared = true;
+    try{ await window.storage.set(key, JSON.stringify(value), shared); }
+    catch(e){ console.error("storage error", key, e); }
+  }
+
+  // ---------- init ----------
+  async function init(){
+    const [apps, users, ratings, darkPref, themePref] = await Promise.all([
+      loadJSON("apps", null),
+      loadJSON("users", {}),
+      loadJSON("ratings", {}),
+      loadJSON("darkMode", false, false),
+      loadJSON("theme", "classic", false)
+    ]);
+    state.apps = apps && apps.length ? apps : DEFAULT_APPS;
+    if(!apps){ await saveJSON("apps", state.apps); }
+    state.users = users;
+    state.ratings = ratings;
+    state.darkMode = !!darkPref;
+    state.theme = themePref || "classic";
+    applyDarkMode();
+    applyTheme();
+    renderFilters();
+    renderThemeGrid();
+    renderAuthArea();
+    render();
+  }
+
+  function applyDarkMode(){
+    document.body.classList.toggle("dark-mode", state.darkMode);
+  }
+
+  function applyTheme(){
+    THEMES.forEach(t=> document.body.classList.remove("theme-"+t.id));
+    if(state.theme !== "classic"){
+      document.body.classList.add("theme-"+state.theme);
+    }
+  }
+
+  function renderThemeGrid(){
+    const el = document.getElementById("themeGrid");
+    el.innerHTML = "";
+    THEMES.forEach(t=>{
+      const opt = document.createElement("button");
+      opt.className = "theme-opt" + (state.theme===t.id ? " active" : "");
+      opt.innerHTML = `<div class="theme-swatch" style="background:linear-gradient(135deg, ${t.colors[0]}, ${t.colors[1]}, ${t.colors[2]})"></div><span>${t.name}</span>`;
+      opt.onclick = async ()=>{
+        state.theme = t.id;
+        applyTheme();
+        renderThemeGrid();
+        await saveJSON("theme", state.theme, false);
+      };
+      el.appendChild(opt);
+    });
+  }
+
+  function initials(name){ return name.trim().charAt(0); }
+
+  function avgFor(appId){
+    const votes = state.ratings[appId] || {};
+    const vals = Object.values(votes);
+    if(!vals.length) return {avg:0, count:0};
+    const sum = vals.reduce((a,b)=>a+b,0);
+    return {avg: sum/vals.length, count: vals.length};
+  }
+
+  function myVote(appId){
+    if(!state.session) return 0;
+    const votes = state.ratings[appId] || {};
+    return votes[state.session.username] || 0;
+  }
+
+  // ---------- render: filters ----------
+  function renderFilters(){
+    const cats = ["همه", "پیام‌رسان", "نقشه‌یاب", "هوش مصنوعی"];
+    const el = document.getElementById("filters");
+    el.innerHTML = "";
+    cats.forEach(c=>{
+      const b = document.createElement("button");
+      b.className = "filter-btn" + (state.filter===c ? " active" : "");
+      b.textContent = c;
+      b.onclick = ()=>{ state.filter = c; renderFilters(); render(); };
+      el.appendChild(b);
+    });
+  }
+
+  // ---------- render: auth area ----------
+  function renderAuthArea(){
+    const el = document.getElementById("authArea");
+    el.innerHTML = "";
+    if(state.session){
+      const who = document.createElement("span");
+      who.className = "who";
+      who.innerHTML = "خوش آمدی، <b>" + escapeHtml(state.session.username) + "</b>" + (state.session.isAdmin ? " (مالک سایت)" : "");
+      const out = document.createElement("button");
+      out.className = "pill ghost";
+      out.textContent = "خروج";
+      out.onclick = ()=>{ state.session = null; renderAuthArea(); render(); };
+      el.appendChild(who);
+      el.appendChild(out);
+    } else {
+      const btn = document.createElement("button");
+      btn.className = "pill primary";
+      btn.textContent = "ورود / ثبت‌نام";
+      btn.onclick = ()=>openAuth("login");
+      el.appendChild(btn);
+    }
+  }
+
+  // ---------- render: best pick ----------
+  function renderBest(){
+    const wrap = document.getElementById("bestWrap");
+    let best = null, bestScore = {avg:0,count:0};
+    state.apps.forEach(a=>{
+      const s = avgFor(a.id);
+      if(s.count>0 && s.avg > bestScore.avg){ best=a; bestScore=s; }
+    });
+    if(!best){ wrap.innerHTML = ""; return; }
+    wrap.innerHTML = `
+      <div class="best-card">
+        <div class="best-icon" style="background:${best.color}">${best.icon ? `<img src="${best.icon}" alt="">` : initials(best.name)}</div>
+        <div class="best-info">
+          <span class="tag">⭐ برترین افزار سایت</span>
+          <h3>${escapeHtml(best.name)}</h3>
+          <p>${escapeHtml(best.desc)}</p>
+        </div>
+        <div class="best-score">${bestScore.avg.toFixed(1)}<small>${bestScore.count} رأی</small></div>
+      </div>`;
+    const bc = wrap.querySelector(".best-card");
+    if(bc){ bc.style.cursor = "pointer"; bc.addEventListener("click", ()=>openDetail(best.id)); attachTilt(bc); }
+  }
+
+  // ---------- render: grid ----------
+  function render(){
+    renderBest();
+    const grid = document.getElementById("grid");
+    grid.innerHTML = "";
+    const list = state.apps.filter(a => state.filter==="همه" || a.cat===state.filter);
+    list.forEach(app=>{
+      const {avg, count} = avgFor(app.id);
+      const mine = myVote(app.id);
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <div class="card-top">
+          <div class="icon" style="background:${app.color}">${app.icon ? `<img src="${app.icon}" alt="">` : initials(app.name)}</div>
+          <div class="card-title">
+            <h4>${escapeHtml(app.name)}</h4>
+            <span class="cat">${escapeHtml(app.cat)}</span>
+          </div>
+        </div>
+        <p class="desc">${escapeHtml(app.desc)}</p>
+        <div class="card-foot">
+          <div class="stars" data-app="${app.id}"></div>
+          <div class="avg">${count? '<b>'+avg.toFixed(1)+'</b> ('+count+' رأی)' : 'بدون امتیاز'}</div>
+        </div>
+        ${app.link ? `<a class="dl-btn" href="${escapeHtml(app.link)}" target="_blank" rel="noopener">⬇ دانلود</a>` : ""}
+      `;
+      const starsWrap = card.querySelector(".stars");
+      for(let i=1;i<=5;i++){
+        const s = document.createElement("button");
+        s.className = "star" + (i<=mine ? " filled" : "");
+        s.textContent = "★";
+        s.title = i + " ستاره";
+        s.onclick = (e)=>{ e.stopPropagation(); vote(app.id, i); };
+        starsWrap.appendChild(s);
+      }
+      const dlLink = card.querySelector(".dl-btn");
+      if(dlLink){ dlLink.onclick = (e)=> e.stopPropagation(); }
+      if(state.session && state.session.isAdmin){
+        const admin = document.createElement("div");
+        admin.className = "admin-controls";
+        admin.style.position = "absolute";
+        admin.style.top = "14px";
+        admin.style.left = "14px";
+        admin.innerHTML = `<button class="icon-btn" title="ویرایش">✎</button><button class="icon-btn danger" title="حذف">🗑</button>`;
+        admin.children[0].onclick = (e)=>{ e.stopPropagation(); openEdit(app); };
+        admin.children[1].onclick = (e)=>{ e.stopPropagation(); removeApp(app.id); };
+        card.style.position = "relative";
+        card.appendChild(admin);
+      }
+      card.addEventListener("click", ()=> openDetail(app.id));
+      attachTilt(card);
+      grid.appendChild(card);
+    });
+
+    if(state.session && state.session.isAdmin){
+      const addCard = document.createElement("button");
+      addCard.className = "card add-card";
+      addCard.textContent = "+ افزودن افزار جدید";
+      addCard.onclick = ()=>openEdit(null);
+      grid.appendChild(addCard);
+    }
+  }
+
+  async function vote(appId, stars){
+    if(!state.session){ openAuth("login"); return; }
+    if(!state.ratings[appId]) state.ratings[appId] = {};
+    state.ratings[appId][state.session.username] = stars;
+    await saveJSON("ratings", state.ratings);
+    render();
+    if(state.detailAppId===appId) renderDetail();
+  }
+
+  // ---------- 3D mouse-tracking tilt ----------
+  function attachTilt(card){
+    const MAX = 9;
+    card.addEventListener("mousemove", (e)=>{
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;   // 0..1
+      const py = (e.clientY - r.top) / r.height;   // 0..1
+      const ry = (px - 0.5) * MAX * 2;   // left/right
+      const rx = (0.5 - py) * MAX * 2;   // up/down
+      card.style.setProperty("--ry", ry.toFixed(2) + "deg");
+      card.style.setProperty("--rx", rx.toFixed(2) + "deg");
+    });
+    card.addEventListener("mouseleave", ()=>{
+      card.style.setProperty("--ry", "0deg");
+      card.style.setProperty("--rx", "0deg");
+    });
+  }
+
+  // ---------- app detail modal (like a store listing) ----------
+  function openDetail(appId){
+    state.detailAppId = appId;
+    renderDetail();
+    document.getElementById("detailOverlay").classList.add("show");
+  }
+
+  function renderDetail(){
+    const app = state.apps.find(a=>a.id===state.detailAppId);
+    if(!app) return;
+    const {avg, count} = avgFor(app.id);
+    const mine = myVote(app.id);
+
+    document.getElementById("detailCarpet").style.setProperty("--app-color", app.color);
+    document.getElementById("detailIcon").style.background = "rgba(255,255,255,0.18)";
+    document.getElementById("detailIcon").innerHTML = app.icon ? `<img src="${app.icon}" alt="">` : initials(app.name);
+    document.getElementById("detailName").textContent = app.name;
+    const catEl = document.getElementById("detailCat");
+    catEl.textContent = app.cat;
+    catEl.setAttribute("data-cat", app.cat);
+    catEl.style.background = "rgba(255,255,255,0.28)";
+    document.getElementById("detailDesc").textContent = app.desc;
+    document.getElementById("detailAvg").innerHTML = count ? `<b>${avg.toFixed(1)}</b> (${count} رأی)` : "بدون امتیاز";
+
+    const starsWrap = document.getElementById("detailStars");
+    starsWrap.innerHTML = "";
+    for(let i=1;i<=5;i++){
+      const s = document.createElement("button");
+      s.className = "star" + (i<=mine ? " filled" : "");
+      s.textContent = "★";
+      s.title = i + " ستاره";
+      s.onclick = ()=>vote(app.id, i);
+      starsWrap.appendChild(s);
+    }
+
+    const dl = document.getElementById("detailDl");
+    if(app.link){
+      dl.href = app.link;
+      dl.classList.remove("disabled");
+      dl.textContent = "⬇ دانلود افزار";
+    } else {
+      dl.href = "javascript:void(0)";
+      dl.classList.add("disabled");
+      dl.textContent = "لینک دانلود موجود نیست";
+    }
+  }
+
+  document.getElementById("detailClose").onclick = ()=> document.getElementById("detailOverlay").classList.remove("show");
+  document.getElementById("detailOverlay").addEventListener("click", (e)=>{ if(e.target.id==="detailOverlay") e.currentTarget.classList.remove("show"); });
+
+  // ---------- auth modal ----------
+  function openAuth(mode){
+    state.authMode = mode;
+    document.getElementById("authTitle").textContent = mode==="login" ? "ورود" : "ثبت‌نام";
+    document.getElementById("authSub").textContent = mode==="login" ? "وارد حساب کاربری‌تان شوید" : "یک نام کاربری و رمز عبور جدید بسازید";
+    document.getElementById("authSubmit").textContent = mode==="login" ? "ورود" : "ثبت‌نام";
+    document.getElementById("authSwitch").innerHTML = mode==="login"
+      ? 'حساب ندارید؟ <a id="toRegister">ثبت‌نام کنید</a>'
+      : 'قبلاً ثبت‌نام کرده‌اید؟ <a id="toRegister">وارد شوید</a>';
+    document.getElementById("authMsg").textContent = "";
+    document.getElementById("authUser").value = "";
+    document.getElementById("authPass").value = "";
+    document.getElementById("toRegister").onclick = ()=>openAuth(mode==="login" ? "register" : "login");
+    document.getElementById("authOverlay").classList.add("show");
+  }
+  document.getElementById("authClose").onclick = ()=> document.getElementById("authOverlay").classList.remove("show");
+  document.getElementById("authOverlay").addEventListener("click", (e)=>{ if(e.target.id==="authOverlay") e.currentTarget.classList.remove("show"); });
+
+  document.getElementById("authSubmit").onclick = async ()=>{
+    const user = document.getElementById("authUser").value.trim();
+    const pass = document.getElementById("authPass").value;
+    const msg = document.getElementById("authMsg");
+    msg.className = "msg";
+    if(!user || !pass){ msg.textContent = "نام کاربری و رمز عبور را وارد کنید."; msg.className="msg err"; return; }
+
+    // ورود مخصوص مالک سایت با نام کاربری و رمز عبور ثابت
+    if(user === OWNER_USERNAME){
+      if(pass !== OWNER_PASSWORD){
+        msg.textContent = "نام کاربری یا رمز عبور اشتباه است."; msg.className="msg err"; return;
+      }
+      state.session = {username:user, isAdmin:true};
+      msg.textContent = "خوش آمدید، مالک سایت!"; msg.className="msg ok";
+      renderAuthArea();
+      render();
+      setTimeout(()=> document.getElementById("authOverlay").classList.remove("show"), 500);
+      return;
+    }
+
+    if(state.authMode === "register"){
+      if(state.users[user]){
+        msg.textContent = "این نام کاربری قبلاً ثبت شده. وارد شوید."; msg.className="msg err"; return;
+      }
+      state.users[user] = pass;
+      await saveJSON("users", state.users);
+      state.session = {username:user, isAdmin: user.toLowerCase()===ADMIN_USERNAME};
+      msg.textContent = "ثبت‌نام با موفقیت انجام شد."; msg.className="msg ok";
+    } else {
+      if(!state.users[user] || state.users[user] !== pass){
+        msg.textContent = "نام کاربری یا رمز عبور اشتباه است."; msg.className="msg err"; return;
+      }
+      state.session = {username:user, isAdmin: user.toLowerCase()===ADMIN_USERNAME};
+      msg.textContent = "خوش آمدید!"; msg.className="msg ok";
+    }
+    renderAuthArea();
+    render();
+    setTimeout(()=> document.getElementById("authOverlay").classList.remove("show"), 500);
+  };
+
+  // ---------- edit modal (admin) ----------
+  function openEdit(app){
+    state.editingId = app ? app.id : null;
+    state.editingIcon = app && app.icon ? app.icon : null;
+    document.getElementById("editTitle").textContent = app ? "ویرایش افزار" : "افزودن افزار";
+    document.getElementById("editName").value = app ? app.name : "";
+    document.getElementById("editCat").value = app ? app.cat : "پیام‌رسان";
+    document.getElementById("editDesc").value = app ? app.desc : "";
+    document.getElementById("editColor").value = app ? app.color : "#B21C34";
+    document.getElementById("editLink").value = app && app.link ? app.link : "";
+    document.getElementById("editIconFile").value = "";
+    document.getElementById("editMsg").textContent = "";
+    updateIconPreview();
+    document.getElementById("editOverlay").classList.add("show");
+  }
+  document.getElementById("editClose").onclick = ()=> document.getElementById("editOverlay").classList.remove("show");
+  document.getElementById("editOverlay").addEventListener("click", (e)=>{ if(e.target.id==="editOverlay") e.currentTarget.classList.remove("show"); });
+
+  function updateIconPreview(){
+    const preview = document.getElementById("editIconPreview");
+    const clearWrap = document.getElementById("editIconClearWrap");
+    if(state.editingIcon){
+      preview.src = state.editingIcon;
+      preview.classList.add("show");
+      clearWrap.style.display = "block";
+    } else {
+      preview.classList.remove("show");
+      preview.src = "";
+      clearWrap.style.display = "none";
+    }
+  }
+
+  document.getElementById("editIconFile").addEventListener("change", (e)=>{
+    const file = e.target.files && e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = ()=>{
+      state.editingIcon = reader.result;
+      updateIconPreview();
+    };
+    reader.readAsDataURL(file);
+  });
+
+  document.getElementById("editIconClear").onclick = ()=>{
+    state.editingIcon = null;
+    document.getElementById("editIconFile").value = "";
+    updateIconPreview();
+  };
+
+  document.getElementById("editSave").onclick = async ()=>{
+    const name = document.getElementById("editName").value.trim();
+    const cat = document.getElementById("editCat").value;
+    const desc = document.getElementById("editDesc").value.trim();
+    const color = document.getElementById("editColor").value;
+    const link = document.getElementById("editLink").value.trim();
+    const icon = state.editingIcon || null;
+    const msg = document.getElementById("editMsg");
+    if(!name){ msg.textContent = "نام افزار را وارد کنید."; msg.className="msg err"; return; }
+
+    if(state.editingId){
+      const idx = state.apps.findIndex(a=>a.id===state.editingId);
+      if(idx>-1){ state.apps[idx] = {...state.apps[idx], name, cat, desc, color, link, icon}; }
+    } else {
+      const id = "app_" + Date.now();
+      state.apps.push({id, name, cat, desc, color, link, icon});
+    }
+    await saveJSON("apps", state.apps);
+    document.getElementById("editOverlay").classList.remove("show");
+    render();
+  };
+
+  async function removeApp(id){
+    state.apps = state.apps.filter(a=>a.id!==id);
+    delete state.ratings[id];
+    await saveJSON("apps", state.apps);
+    await saveJSON("ratings", state.ratings);
+    render();
+  }
+
+  function escapeHtml(str){
+    return String(str).replace(/[&<>"']/g, m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+  }
+
+  // ---------- header menu (dark mode + support) ----------
+  const menuBtn = document.getElementById("menuBtn");
+  const menuDropdown = document.getElementById("menuDropdown");
+  menuBtn.onclick = (e)=>{
+    e.stopPropagation();
+    menuDropdown.classList.toggle("show");
+  };
+  document.addEventListener("click", (e)=>{
+    if(!menuDropdown.contains(e.target) && e.target !== menuBtn){
+      menuDropdown.classList.remove("show");
+    }
+  });
+
+  document.getElementById("darkModeToggle").onclick = async ()=>{
+    state.darkMode = !state.darkMode;
+    applyDarkMode();
+    await saveJSON("darkMode", state.darkMode, false);
+    menuDropdown.classList.remove("show");
+  };
+
+  document.getElementById("supportMenuBtn").onclick = ()=>{
+    menuDropdown.classList.remove("show");
+    document.getElementById("supportOverlay").classList.add("show");
+  };
+  document.getElementById("supportClose").onclick = ()=> document.getElementById("supportOverlay").classList.remove("show");
+  document.getElementById("supportOverlay").addEventListener("click", (e)=>{ if(e.target.id==="supportOverlay") e.currentTarget.classList.remove("show"); });
+
+  document.getElementById("themeMenuBtn").onclick = ()=>{
+    menuDropdown.classList.remove("show");
+    renderThemeGrid();
+    document.getElementById("themeOverlay").classList.add("show");
+  };
+  document.getElementById("themeClose").onclick = ()=> document.getElementById("themeOverlay").classList.remove("show");
+  document.getElementById("themeOverlay").addEventListener("click", (e)=>{ if(e.target.id==="themeOverlay") e.currentTarget.classList.remove("show"); });
+
+  init();
+})();
+</script>
+</body>
+</html>
